@@ -3,6 +3,7 @@ const stopEl = document.getElementById("stop");
 const resetEl = document.getElementById("reset");
 const timerEl = document.getElementById("timer");
 const titleEl = document.getElementById("title");
+const cyclesEl = document.getElementById("cycles");
 const minInpt = document.getElementById("minutes");
 const secInpt = document.getElementById("seconds");
 
@@ -28,13 +29,20 @@ function updateTimer() {
 function updateTitle() {
   if (isWorking) {
     titleEl.textContent = "Work";
+    document.body.style.backgroundImage = "url('assets/workBackground.png')";
   } else {
     if (cycles >= 4) {
       titleEl.textContent = "Long Rest";
+      document.body.style.backgroundImage = "url('assets/restBackground.png')";
     } else {
       titleEl.textContent = "Rest";
+      document.body.style.backgroundImage = "url('assets/restBackground.png')";
     }
   }
+}
+
+function updateCycles(){
+  cyclesEl.textContent = cycles;
 }
 
 function addTimes() {
@@ -94,6 +102,7 @@ function startTimer() {
 
       addTimes();
       updateTitle();
+      updateCycles();
       updateTimer();
     }
   }, 1000);
