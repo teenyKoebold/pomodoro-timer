@@ -153,5 +153,10 @@ startEl.addEventListener("click", () => {
   }).catch(() => {});
   startTimer();
 });
-stopEl.addEventListener("click", stopTimer);
+stopEl.addEventListener("click", () => {
+  alarmSound.pause().then(() => {
+    alarmSound.currentTime = 0;
+  }).catch(() => { });
+  stopTimer();
+});
 resetEl.addEventListener("click", resetTimer);
